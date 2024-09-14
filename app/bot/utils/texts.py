@@ -19,7 +19,7 @@ class Text(metaclass=ABCMeta):
 
         :param language_code: The language code (e.g., "ru" or "en").
         """
-        self.language_code = language_code if language_code in SUPPORTED_LANGUAGES.keys() else "en"
+        self.language_code = language_code if language_code in SUPPORTED_LANGUAGES.keys() else "ru"
 
     @property
     @abstractmethod
@@ -68,8 +68,14 @@ class TextMessage(Text):
                     "<a href=\"https://github.com/nessshon/support-bot\">GitHub</a>"
                 ),
                 "user_started_bot": (
-                    "<b>User {name} started the bot!</b>\n\n"
-                    "List of available commands:\n\n"
+                    "<b>User {name} started the bot!</b>\n"
+                    "<b>ID:</b>"
+                    " <code>{id}</code>\n"
+                    "<b>Username:</b>\n"
+                    "- {username}\n"
+                    "<b>Registration date:</b>\n"
+                    "- {created_at}"
+                    "\n\nList of available commands:\n\n"
                     "• /ban\n"
                     "Block/Unblock user"
                     "<blockquote>Block the user if you do not want to receive messages from him.</blockquote>\n\n"
@@ -122,8 +128,16 @@ class TextMessage(Text):
                     "<a href=\"https://github.com/wmzaru/dbtelegram\">GitHub</a>"
                 ),
                 "user_started_bot": (
-                    "<b>Пользователь {name} запустил(а) бота!</b>\n\n"
-                    "Список доступных команд:\n\n"
+                    "<b>Пользователь {name} запустил(а) бота!</b>\n"
+                    "<b>ID:</b>"
+                    " <code>{id}</code>\n"
+                    "<b>Имя:</b>\n"
+                    "- {full_name}\n"
+                    "<b>Username:</b>\n"
+                    "- {username}\n"
+                    "<b>Дата регистрации:</b>\n"
+                    "- {created_at}"
+                    "\n\nСписок доступных команд:\n\n"
                     "• /ban\n"
                     "Заблокировать/Разблокировать пользователя"
                     "<blockquote>Заблокируйте пользователя, если не хотите получать от него сообщения.</blockquote>\n\n"
